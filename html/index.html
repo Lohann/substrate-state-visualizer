@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello wasm-pack!</title>
+    <style>
+      #table-body td {
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body style="padding-bottom: 50px">
+    <table style="width: 1000px">
+      <tbody id="table-body" style="font-family: monospace;"></tbody>
+      <tfoot>
+      <tr>
+        <td></td>
+        <td><input id="node-key" type="text" placeholder="key" style="width: 100%" /></td>
+        <td><input id="node-value" type="text" placeholder="value" style="width: 100%" /></td>
+        <td><button id="table-insert">insert</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="3">
+          <table style="width: 100%;">
+            <tbody>
+            <tr>
+              <td>
+                <label>View Mode</label><br>
+                <input type="radio" id="mode_tree" name="tree_mode" value="Tree" checked>
+                <label for="mode_tree">Tree</label>
+                <input type="radio" id="mode_cluster" name="tree_mode" value="Cluster">
+                <label for="mode_cluster">Cluster</label>
+              </td>
+              <td>
+                <div>
+                  <input type="checkbox" id="show_storage_checkbox" name="show_storage">
+                  <label for="show_storage_checkbox">Show Storage Nodes</label>
+                </div>
+              </td>
+              <td>
+                <label for="yscale-slider">X Scale</label><br>
+                <input type="range" min="1" max="100" value="50" class="slider" id="yscale-slider">
+              </td>
+              <td>
+                <label for="xscale-slider">Y Scale</label><br>
+                <input type="range" min="1" max="20" value="1" class="slider" id="xscale-slider">
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+    <table>
+      <thead><th>#</th><th>Key</th><th id="storage-size"></th></thead>
+      <tbody id="table-database" style="font-family: monospace;"></tbody>
+    </table>
+    <div id="content"></div>
+<div id="editor" style="width: 100%;height: 500px;font-size: 16px">// All code is wrapped within an async closure,
+// allowing access to api, hashing, types, util.
+// (async ({ trie, data, wasm }) => {
+//   ... any user code is executed here ...
+// })();
+
+  let pallet  = wasm.twox_128("System");
+  let storage = wasm.twox_128("Account");
+
+  for (let i=0; i<10; i++) {
+  let pubkey      = wasm.blake2_256(i);
+  let pubkey_hash = wasm.blake2_128(pubkey);
+  let slot = Buffer.concat([
+  pallet,
+  storage,
+  pubkey_hash,
+  pubkey,
+  ]);
+  trie.insert(slot, "0xeeee");
+  }</div>
+    <button id="run-code">run code</button>
+    <input type="file" id="read-file" title="load genesis raw">
+    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+    <script src="./bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/ace.js" integrity="sha512-OMjy8oWtPbx9rJmoprdaQdS2rRovgTetHjiBf7RL7LvRSouoMLks5aIcgqHb6vGEAduuPdBTDCoztxLR+nv45g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>

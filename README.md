@@ -25,7 +25,7 @@ wasm-pack build
 ### 🔬 Test in the Browser
 
 ```
-cd www
+cd html
 npm install
 npm start
 ```
