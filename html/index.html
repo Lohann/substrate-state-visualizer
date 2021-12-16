@@ -58,26 +58,7 @@
       <tbody id="table-database" style="font-family: monospace;"></tbody>
     </table>
     <div id="content"></div>
-<div id="editor" style="width: 100%;height: 500px;font-size: 16px">// All code is wrapped within an async closure,
-// allowing access to api, hashing, types, util.
-// (async ({ trie, data, wasm }) => {
-//   ... any user code is executed here ...
-// })();
-
-  let pallet  = wasm.twox_128("System");
-  let storage = wasm.twox_128("Account");
-
-  for (let i=0; i<10; i++) {
-  let pubkey      = wasm.blake2_256(i);
-  let pubkey_hash = wasm.blake2_128(pubkey);
-  let slot = Buffer.concat([
-  pallet,
-  storage,
-  pubkey_hash,
-  pubkey,
-  ]);
-  trie.insert(slot, "0xeeee");
-  }</div>
+    <div id="editor" style="width: 100%;height: 500px;font-size: 16px"></div>
     <button id="run-code">run code</button>
     <input type="file" id="read-file" title="load genesis raw">
     <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>

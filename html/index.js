@@ -24,8 +24,6 @@ const data = [
     value: new Buffer([i]),
 }));
 
-
-
 function renderRows(data, trie, options) {
     // Render Values Table
     const table = document.getElementById("table-body");
@@ -131,7 +129,6 @@ function renderRows(data, trie, options) {
             }
             return value ? `${nibbles} (${value})` : nibbles;
         },
-        // sort: options.cluster ? (a, b) => d3.descending(a.height, b.height) : null,
         title: (d, n) => {
             // hover text
             let hoverText = [d.type + ' '];
@@ -148,11 +145,7 @@ function renderRows(data, trie, options) {
                 }
             }
             return hoverText.join('');
-            //`${n.ancestors().reverse().map(d => d.data.type).join(".")}`
         },
-        // link: (d, n) => n.children
-        //     ? `https://github.com/prefuse/Flare/tree/master/flare/src/${n.ancestors().reverse().map(d => d.data.name).join("/")}`
-        //     : `https://github.com/prefuse/Flare/blob/master/flare/src/${n.ancestors().reverse().map(d => d.data.name).join("/")}.as`,
         width: Math.max(content.clientWidth, 1152),
         tree: options.cluster ? d3.cluster : d3.tree,
         xScale: options.xScale,
@@ -305,8 +298,6 @@ window.onload = function () {
             options.renderStorageNodes = event.currentTarget.checked;
             renderRows(data, trie, options);
         }
-        // options.cluster = true;
-        // renderRows(data, trie, options)
     }
 
     // Sliders
