@@ -1,7 +1,7 @@
 {
-  "name": "create-wasm-app",
+  "name": "substrate-state-visualizer",
   "version": "0.1.0",
-  "description": "create an app to consume rust-generated wasm packages",
+  "description": "Visualize the substrate chain state",
   "main": "index.js",
   "bin": {
     "create-wasm-app": ".bin/create-wasm-app.js"
@@ -12,20 +12,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rustwasm/create-wasm-app.git"
+    "url": "git+https://github.com/Lohann/substrate-state-visualizer.git"
   },
   "keywords": [
     "webassembly",
-    "wasm",
+    "substrate",
     "rust",
-    "webpack"
+    "merkle-radix-trie"
   ],
-  "author": "Ashley Williams <ashley666ashley@gmail.com>",
-  "license": "(MIT OR Apache-2.0)",
+  "author": "Lohann Paterno Coutinho Ferreira (developer@lohann.dev)",
   "bugs": {
-    "url": "https://github.com/rustwasm/create-wasm-app/issues"
+    "url": "https://github.com/Lohann/substrate-state-visualizer/issues"
   },
-  "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
+  "homepage": "https://github.com/Lohann/substrate-state-visualizer#substrate-state-visualizer",
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.0",
     "wasm-game-of-life": "file:../pkg",
