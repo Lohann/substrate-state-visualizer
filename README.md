@@ -1,3 +1,5 @@
+> [!WARNING]
+> This repo is deprecated, an updated version is now located at https://github.com/Lohann/merkle-patricia-trie-demo
 <div align="center">
 
   <h1><code>substrate-state-visualizer</code></h1>
